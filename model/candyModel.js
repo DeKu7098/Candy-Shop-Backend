@@ -1,4 +1,4 @@
-const {sequelize} = require("../db/connect");
+const sequelize = require("../db/connect");
 
 const { Sequelize, DataTypes } = require("sequelize");
 
@@ -24,4 +24,4 @@ const user = sequelize.define("Candy", {
 	},
 });
 
-module.exports = { user };
+module.exports = user;

@@ -6,4 +6,4 @@ const sequelize = new Sequelize("candy", "root", "password", {
   dialect: "mysql",
 });
 
-module.exports = { sequelize };
+module.exports = sequelize ;

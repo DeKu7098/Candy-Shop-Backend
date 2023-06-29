@@ -1,7 +1,7 @@
 const express = require("express");
-const candyRoute = require("./routes/candy-route");
+const candyRoute = require("./routes/candy");
 const app = express();
-const  {sequelize}= require("./db/connect");
+const  sequelize = require("./db/connect");
 const bodyParser = require("body-parser");
 const cors = require('cors')
 app.use(cors())
@@ -11,11 +11,10 @@ app.use(bodyParser.json());
 
 app.use(candyRoute);
 
-(async () => {
-	try {
-		await sequelize.sync();
-		app.listen(3000, console.log("server listening on port 3000..."));
-	} catch (error) {
-		console.log(error);
-	}
-})();
+
+sequelize.sync().then(() => {
+	app.listen(3000);
+}
+).catch((err) => {
+	console.log(err);
+});
